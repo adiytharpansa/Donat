@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Donat Play — Portal Video Modern</title>
+<meta name="description" content="Template portal video modern, responsif, generik dari nol. Bukan klon situs mana pun." />
+<style>
+  :root{
+    --bg:#0b0f19; --bg2:#121829; --card:#171f36; --card2:#1f2a47;
+    --text:#eef2ff; --muted:#94a3b8; --line:rgba(255,255,255,.08);
+    --accent:#6366f1; --accent2:#22d3ee; --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 600px at 20% -10%,#1e1b4b 0%,transparent 60%),radial-gradient(1000px 500px at 90% 0%,#0e7490 0%,transparent 55%),var(--bg);color:var(--text);min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  /* Header */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(11,15,25,.78);border-bottom:1px solid var(--line)}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+  .topbar{display:flex;align-items:center;gap:16px;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em;white-space:nowrap}
+  .logo-mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:20px;box-shadow:0 8px 24px rgba(99,102,241,.4)}
+  .logo span em{font-style:normal;background:linear-gradient(90deg,#a5b4fc,#67e8f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .search{flex:1;display:flex;max-width:620px;margin:0 auto;background:#0f1530;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .search input{flex:1;background:transparent;border:0;outline:0;color:var(--text);padding:12px 18px;font-size:15px}
+  .search button{border:0;cursor:pointer;padding:0 22px;background:linear-gradient(135deg,var(--accent),#4f46e5);color:white;font-weight:600}
+  .actions{display:flex;align-items:center;gap:10px}
+  .btn{border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text);padding:10px 16px;border-radius:999px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap}
+  .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;box-shadow:0 6px 20px rgba(34,211,238,.3)}
+  /* Subnav */
+  .subnav{display:flex;gap:10px;overflow-x:auto;padding:12px 0 14px;scrollbar-width:none}
+  .subnav::-webkit-scrollbar{display:none}
+  .pill{flex:0 0 auto;border:1px solid var(--line);background:rgba(255,255,255,.05);padding:8px 16px;border-radius:999px;font-size:13.5px;color:#cbd5e1;cursor:pointer;transition:.2s}
+  .pill.active,.pill:hover{background:white;color:#0b0f19;border-color:white}
+  /* Hero */
+  .hero{margin:22px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+  .hero-main{position:relative;overflow:hidden;border-radius:var(--radius);min-height:320px;background:linear-gradient(135deg,#312e81,#0e7490 60%,#1e1b4b);border:1px solid var(--line);display:flex;align-items:end;padding:28px}
+  .hero-main::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.25),transparent 40%),linear-gradient(transparent 30%,rgba(0,0,0,.75))}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:999px;margin-bottom:12px}
+  .hero h1{margin:0 0 8px;font-size:clamp(24px,3.5vw,38px);line-height:1.05;letter-spacing:-.03em;position:relative}
+  .hero p{margin:0 0 16px;color:#e0e7ff;position:relative;max-width:520px;line-height:1.6}
+  .hero-side{display:grid;gap:18px}
+  .stat-card{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+  .stat-card h3{margin:0 0 12px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .trend{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+  .trend:first-of-type{border-top:0}
+  .trend b{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.08);flex:0 0 28px}
+  /* Toolbar */
+  .toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 16px;flex-wrap:wrap}
+  .toolbar h2{margin:0;font-size:20px;letter-spacing:-.02em}
+  .toolbar p{margin:4px 0 0;color:var(--muted);font-size:13.5px}
+  select{background:#0f1530;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px}
+  /* Grid */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-bottom:18px}
+  .card{background:linear-gradient(180deg,var(--card),#131a2e);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s;cursor:pointer}
+  .card:hover{transform:translateY(-4px);border-color:rgba(99,102,241,.5);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+  .thumb{position:relative;aspect-ratio:16/9;overflow:hidden;display:grid;place-items:center;font-size:42px}
+  .thumb span.badge{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.75);font-size:12px;padding:4px 8px;border-radius:8px}
+  .thumb span.live{position:absolute;top:10px;left:10px;background:#ef4444;font-size:11px;font-weight:800;padding:4px 8px;border-radius:999px;letter-spacing:.06em}
+  .thumb span.hd{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.9);color:#111;font-size:11px;font-weight:800;padding:3px 7px;border-radius:6px}
+  .card-body{padding:14px 14px 16px}
+  .card-body h3{margin:0 0 8px;font-size:15px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:42px}
+  .meta{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12.5px}
+  .avatar{width:28px;height:28px;border-radius:50%;flex:0 0 28px;display:grid;place-items:center;font-size:14px;font-weight:800;color:white}
+  /* Modal */
+  .modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:100;padding:20px}
+  .modal.open{display:grid}
+  .modal-box{width:min(960px,100%);background:#0f1530;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .modal-player{aspect-ratio:16/9;background:#000;display:grid;place-items:center;position:relative}
+  .modal-player button.play{width:84px;height:84px;border-radius:50%;border:0;font-size:32px;cursor:pointer;background:white;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+  .modal-info{padding:20px 22px}
+  .modal-info h3{margin:0 0 8px}
+  .modal-info p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
+  .close{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.6);color:white;cursor:pointer}
+  /* Footer */
+  footer{margin-top:24px;border-top:1px solid var(--line);background:rgba(0,0,0,.25)}
+  .foot{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:20px;padding:32px 20px;max-width:1280px;margin:0 auto}
+  .foot h4{margin:0 0 12px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .foot a{display:block;padding:6px 0;color:#cbd5e1;font-size:14px}
+  .foot a:hover{color:white}
+  .note{max-width:1280px;margin:0 auto;padding:0 20px 28px;color:var(--muted);font-size:12.5px;line-height:1.6}
+  .loadmore{display:grid;place-items:center;padding:10px 0 36px}
+  @media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}}
+  @media(max-width:680px){.grid{grid-template-columns:repeat(2,1fr)}.topbar{flex-wrap:wrap;height:auto;padding:12px 0}.search{order:3;max-width:none}.actions{margin-left:auto}.hero-main{min-height:260px}}
+  @media(max-width:440px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="logo" href="#"><div class="logo-mark">▶</div><span>Donat<em>Play</em></span></a>
+      <div class="search">
+        <input id="q" type="search" placeholder="Cari video, kreator, topik…" autocomplete="off" />
+        <button onclick="toast('Pencarian demo — filter berjalan otomatis')">Cari</button>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="toast('Demo: fitur upload belum aktif')">⬆ Upload</button>
+        <button class="btn primary" onclick="toast('Demo: masuk sebagai tamu')">Masuk</button>
+      </div>
+    </div>
+    <nav class="subnav" id="cats"></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div style="position:relative">
+        <div class="hero-badge">✨ Pilihan Editor • Desain Asli Dari Nol</div>
+        <h1>Jelajah video kreator lokal dengan tampilan modern & cepat.</h1>
+        <p>Template portal video generik: pencarian instan, filter kategori, sorting, dan modal player. Semua thumbnail & data hanya placeholder ramah keluarga.</p>
+        <div style="display:flex;gap:10px;position:relative">
+          <button class="btn primary" onclick="document.getElementById('gridTitle').scrollIntoView({behavior:'smooth'})">Jelajahi Sekarang</button>
+          <button class="btn" onclick="toast('Demo: trailer tidak dimuat')">▶ Putar Trailer</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="stat-card">
+        <h3>Trending minggu ini</h3>
+        <div id="trending"></div>
+      </div>
+      <div class="stat-card" style="display:flex;gap:16px;align-items:center">
+        <div style="flex:1"><div style="font-size:28px;font-weight:800">12.4K</div><div style="color:var(--muted);font-size:13px">Video • 840 Kreator • 100% Template Demo</div></div>
+        <div style="font-size:40px">📊</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div>
+      <h2 id="gridTitle">Rekomendasi untukmu</h2>
+      <p id="count"></p>
+    </div>
+    <select id="sort" onchange="render()">
+      <option value="populer">Paling Populer</option>
+      <option value="baru">Paling Baru</option>
+      <option value="durasi">Durasi Terpendek</option>
+    </select>
+  </div>
+
+  <section class="grid" id="grid"></section>
+  <div class="loadmore"><button class="btn" onclick="loadMore()">Muat lebih banyak</button></div>
+</main>
+
+<footer>
+  <div class="foot">
+    <div><a class="logo" href="#"><div class="logo-mark">▶</div><span>Donat<em>Play</em></span></a><p style="color:var(--muted);line-height:1.6;font-size:14px">Template UI video portal modern dari nol. Bukan klon, tanpa konten dewasa, semua data fiktif untuk demo desain.</p></div>
+    <div><h4>Jelajah</h4><a href="#">Beranda</a><a href="#">Trending</a><a href="#">Kreator</a><a href="#">Live</a></div>
+    <div><h4>Kategori</h4><a href="#">Teknologi</a><a href="#">Musik</a><a href="#">Kuliner</a><a href="#">Travel</a></div>
+    <div><h4>Bantuan</h4><a href="#">Tentang</a><a href="#">Pedoman Komunitas</a><a href="#">Privasi</a><a href="#">Kontak</a></div>
+  </div>
+  <div class="note">Catatan: desain 100% orisinal untuk tujuan pembelajaran. Jangan gunakan untuk meniru merek / situs mana pun, dan jangan unggah konten dewasa atau melanggar hak cipta.</div>
+</footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="modal-player"><button class="close" onclick="closeModal()">✕</button><div style="text-align:center"><button class="play" onclick="toast('Demo player — tidak ada video asli')">▶</button><div style="color:#cbd5e1;margin-top:12px;font-size:14px" id="mSub">Pratinjau demo</div></div></div>
+    <div class="modal-info"><h3 id="mTitle"></h3><p id="mDesc"></p></div>
+  </div>
+</div>
+<div id="toast" style="position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);opacity:0;transition:.3s;background:white;color:#111;padding:12px 18px;border-radius:999px;font-size:14px;font-weight:600;z-index:200"></div>
+
+<script>
+const CATS = ["Semua","Teknologi","Musik","Kuliner","Travel","Edukasi","Gaming","Film","Olahraga","Vlog","Live"];
+const EMOJI = ["🎬","🎧","🍜","✈️","💡","🎮","🎥","⚽","📷","🔴","🌿","🚀"];
+const GRADS = [
+  "linear-gradient(135deg,#6366f1,#0ea5e9)","linear-gradient(135deg,#ec4899,#8b5cf6)",
+  "linear-gradient(135deg,#f59e0b,#ef4444)","linear-gradient(135deg,#10b981,#0ea5e9)",
+  "linear-gradient(135deg,#8b5cf6,#ec4899)","linear-gradient(135deg,#06b6d4,#6366f1)",
+  "linear-gradient(135deg,#f97316,#eab308)","linear-gradient(135deg,#14b8a6,#22c55e)"
+];
+const TITLES = [
+  "Membangun Website Modern dalam 20 Menit","Resep Nasi Goreng Rumahan Super Gurih","ExploreHidden Beach: Surga Tersembunyi di Timur",
+  "Belajar JavaScript dari Nol Sampai Mahir","Setup Studio Musik Low Budget Hasil Pro","5 Destinasi Pendakian Ramah Pemula",
+  "Review Jujur Kamera Mirrorless 2026","Turnamen Mini Sepak Bola Antar Komunitas","Sehari Jadi Barista: Latte Art Dasar",
+  "Ngoding Bareng: Bikin Aplikasi To-Do List","Sinematografi HP: Hasil Setara Kamera?","Rakit PC Gaming 8 Jutaan, Worth It?",
+  "Jelajah Pasar Tradisional & Kuliner Legendaris","Tips Produktivitas untuk Pelajar & Pekerja","Live Akustik: Lagu Santai Teman Kerja",
+  "Tutorial Drone untuk Pemula, Aman & Cinematic","Maraton Film Akhir Pekan Bareng Keluarga","Belajar Masak Ramen Kuah Kaya Rasa"
+];
+let VIDEOS = TITLES.map((t,i)=>({
+  id:i, title:t,
+  cat: CATS[1+(i% (CATS.length-1))],
+  dur: `${4+ (i*7)%22}:${String((i*13)%60).padStart(2,'0')}`,
+  views: (0.4 + (i*1.7)%18).toFixed(1)+" rb",
+  age: (1+ i%14)+" hari lalu",
+  ch: ["Kreator Nusantara","Studio Kreatif","Ruang Belajar","Dapur Kita","Jalan-Jalan ID","Tekno Harian"][i%6],
+  grad: GRADS[i%GRADS.length], emoji: EMOJI[i%EMOJI.length],
+  live: CATS[1+(i% (CATS.length-1))]==="Live" && i%3===0,
+  ts: Date.now()-i*86400000
+}));
+let activeCat="Semua", limit=12;
+const catsEl=document.getElementById('cats'), grid=document.getElementById('grid');
+function renderCats(){
+  catsEl.innerHTML = CATS.map(c=>`<button class="pill ${c===activeCat?'active':''}" onclick="setCat('${c}')">${c}</button>`).join('');
+}
+function setCat(c){activeCat=c;limit=12;renderCats();render();}
+function filtered(){
+  const q=document.getElementById('q').value.toLowerCase();
+  let v=VIDEOS.filter(x=>(activeCat==="Semua"||x.cat===activeCat)&&(x.title.toLowerCase().includes(q)||x.ch.toLowerCase().includes(q)||x.cat.toLowerCase().includes(q)));
+  const s=document.getElementById('sort').value;
+  if(s==="baru")v=[...v].sort((a,b)=>b.ts-a.ts);
+  else if(s==="durasi")v=[...v].sort((a,b)=>a.dur.localeCompare(b.dur));
+  return v;
+}
+function render(){
+  const v=filtered(), show=v.slice(0,limit);
+  document.getElementById('count').textContent=`${v.length} video • kategori: ${activeCat} • template demo orisinal`;
+  document.getElementById('trending').innerHTML=[...VIDEOS].slice(0,4).map((x,i)=>`<div class="trend"><b>${i+1}</b><span>${x.title}</span></div>`).join('');
+  grid.innerHTML=show.map(x=>`
+    <article class="card" onclick="openModal(${x.id})">
+      <div class="thumb" style="background:${x.grad}">${x.emoji}
+        ${x.live?'<span class="live">● LIVE</span>':''}
+        <span class="hd">HD</span><span class="badge">${x.dur}</span>
+      </div>
+      <div class="card-body"><h3>${x.title}</h3>
+        <div class="meta"><div class="avatar" style="background:${x.grad}">${x.ch[0]}</div><div><div style="color:var(--text);font-weight:600">${x.ch}</div><div>${x.views} ditonton • ${x.age} • ${x.cat}</div></div></div>
+      </div>
+    </article>`).join('') || `<p style="color:var(--muted)">Tidak ada hasil. Coba kata kunci lain.</p>`;
+}
+function loadMore(){limit+=8;render();}
+function openModal(id){
+  const x=VIDEOS.find(v=>v.id===id);
+  document.getElementById('mTitle').textContent=x.title;
+  document.getElementById('mDesc').textContent=`${x.ch} • ${x.views} ditonton • ${x.age} • Kategori ${x.cat}. Ini modal demo — tidak memutar video asli.`;
+  document.getElementById('mSub').textContent=x.title;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.opacity=1;t.style.transform='translateX(-50%) translateY(0)';clearTimeout(t._h);t._h=setTimeout(()=>{t.style.opacity=0;t.style.transform='translateX(-50%) translateY(20px)'},2200);}
+document.getElementById('q').addEventListener('input',()=>{render();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+renderCats();render();
+</script>
+</body>
+</html>
